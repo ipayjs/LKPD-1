@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Data Ayah</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        form {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .radio-group {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+        }
+        input[type="radio"] {
+            margin-right: 0.5rem;
+        }
+        select, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        p {
+            margin-bottom: 0.5rem;
+            color: #34495e;
+        }
+        input[type="submit"] {
+            background-color: #3498db;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <form action="">
+        <h1>Data Ayah</h1>
+        <p>Status Ayah*</p>
+        <div class="radio-group">
+            <label for="hidup">
+                <input type="radio" name="status" id="hidup" value = "hidup" onclick = "ubah(this)">
+                Masih Hidup
+            </label>
+            <label for="meninggal">
+                <input type="radio" name="status" id="meninggal"  value = "mati" onclick = "ubah(this)">
+                Meninggal
+            </label>
+            <label for="undefined">
+                <input type="radio" name="status" id="undefined" value = "undefined"  onclick = "ubah(this)">
+                Undefined
+            </label>
+        </div>
+        <div id = "data_ayah">
+        <div class="pendidikan">
+            <p>Pendidikan Ayah</p>
+            <select name="pendidikan" id="pendidikan">
+                <option value="" disabled selected>Pilih</option>
+                <option value="TK">TK</option>
+                <option value="SD">SD</option>
+                <option value="SMP">SMP</option>
+                <option value="SMK">SMK</option>
+                <option value="S1">S1</option>
+            </select>
+        </div>
+        <div class="pekerjaan">
+            <p>Pekerjaan Ayah</p>
+            <select name="pekerjaan" id="pekerjaan">
+                <option value="" disabled selected>Pilih</option>
+                <option value="PNS">Pegawai Negeri Sipil</option>
+                <option value="Swasta">Swasta</option>
+                <option value="Wiraswasta">Wiraswasta</option>
+                <option value="Lainnya">Lainnya</option>
+            </select>
+        </div>
+        <div class="deskripsi">
+            <p>Deskripsi pekerjaan ayah</p>
+            <input type="text" placeholder="Deskripsikan pekerjaan ayah">
+        </div>
+        <div class="penghasilan">
+            <p>Total penghasilan</p>
+            <input type="text" id = "rupiah" onclick="rp()"   placeholder="Masukkan total penghasilan">
+        </div>
+        <div class="detail">
+            <p id = "ayah_detail">Detail ayah bekerja,berapa lama sudah bekerja, kondisi kesehatan, dan kondisi karir profesinya</p>
+            <input type="text">
+        </div>
+        </div>
+        
+    </form>
+    <script>
+           function ubah(e) {
+            const dataayah = document.getElementById("data_ayah");
+            const ayahdetail = document.getElementById("ayah_detail");
+            if(e.value == "mati") {
+                ayahdetail.innerHTML = "Detail pekerjaan ayah semasa hidup";
+                dataayah.style.display = "block";
+            } else if(e.value == "hidup"){
+                ayahdetail.innerHTML = "Detail ayah bekerja,berapa lama sudah bekerja, kondisi kesehatan, dan kondisi karir profesinya";
+                dataayah.style.display = "block";
+            } else if(e.value == "undefined") {
+                dataayah.style.display = "none";
+            }
+        }
+
+        document.getElementById('rupiah').addEventListener('input', function(e) {
+            let value = e.target.value;
+            value = value.replace(/[^,\d]/g, '').toString();
+            let split = value.split(',');
+            let sisa = split[0].length % 3;
+            let rupiah = split[0].substr(0, sisa);
+            let ribuan = split[0].substr(sisa).match(/\d{3}/gi);
+
+            if(ribuan) {
+                let separator = sisa ? '.' : '';
+                rupiah += separator + ribuan.join('.');
+            }
+
+            rupiah = split[1] !== undefined ? rupiah + ',' + split[1] : rupiah;
+            e.target.value = 'Rp ' + rupiah;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        input[type="radio"],
+        input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .infak {
+            width: 20%;
+            padding: 5px;
+            margin-top: 5px;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ddd;
+            margin: 10px 0;
+        }
+
+        b {
+            color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Your existing HTML content here -->
+
+    <table style="width: 100%;">
+        <tr>
+            <th style="width: 2%;">No</th>
+            <th>Keterangan</th>
+            <th style="width: 40%;">Bersedia Membayar</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td rowspan="2">Bersedia membayar <b>Dana Sumbangan Pembangunan (DSP)</b> Sebesar <b>Rp.8.500.000 dengan
+                    mekanisme<br> pembayaran Dana Sumbangan Pendidikan</b></td>
+            <td> <input type="radio" id="lunas" name="lunas" value="lunas">
+                <label for="lunas"> Lunas saat Daftar Ulang<br> 60% dibayarkan saat daftar ulang dan sisanya
+                    dibayarkan</label><br>
+                <input type="radio" id="haha" name=haha>
+                <label for="haha">lambat tanggal 13 juli 2024</label>
+            </td>
+        </tr>
+        <tr>
+
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Bersedia membayar <b>Sumbanga Penyelenggaraan Pendidikan (SPP)</b>secara rutin setiap bulan sebesar
+                <b>Rp.550.000</b>
+                yang dibayarkan sebelum tanggal 10 setiap bulannya kecuali bulan juli 2024</td>
+            <td><input type="checkbox"></td>
+        </tr>
+        <tr>
+            <td rowspan="2">3</td>
+            <td><br> <br>
+                <b>Pembayaran lainnya.</b><br>
+                setelah Putra/Putri kami diterima di SMK Wikrama Bogor, kami juga bersedia memberikan:<br><br>
+                a.Wakaf pembangunan Masjid Al-Ikram :<br><br><br>
+            <td>
+                <hr>
+                <input type="radio" name="radio" class="radio">
+                <label for="radio">Rp.300.000</label><br>
+                </hr>
+                <hr>
+                <input type="radio" name="radio" class="radio">
+                <label for="radio">Rp.500.000</label><br>
+
+                </hr>
+                <hr>
+                <input type="radio" name="radio" class="radio">
+                <label for="radio">Rp.1.000.000</label><br>
+
+                </hr>
+                <hr>
+                <input type="radio" name="radio" class="radio">
+                <label for="radio">Rp.2.000.000</label><br>
+
+                </hr>
+                <hr>
+                <input type="radio" name="radio" class="radio">
+                <label for="radio">Rp.5000.000</label><br>
+
+                </hr>
+                <hr>
+                <input type="radio" name="radio" class="radio">
+                <label for="radio">>Rp.5000.000 atau Rp. <input type="text" class="infak"></label><br>
+
+                </hr>
+            </td>
+            </td>
+        </tr>
+        <tr>
+            <td>b.<b>Zakat Infaq dan Sodaqoh secara rutin setiap bulan : </b></td>
+            <td>
+                <input type="text" class="infak">
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

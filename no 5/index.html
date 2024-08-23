@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown Alert</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .button {
+            background-color: #4CAF50;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            background-color: #45a049;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .countdown {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ff4136;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            display: none;
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .countdown.show {
+            display: block;
+            animation: pulse 1s infinite alternate;
+        }
+
+        .countdown span {
+            color: white;
+            font-size: 36px;
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        @keyframes pulse {
+            from {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            to {
+                transform: translate(-50%, -50%) scale(1.05);
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="button" id="myButton">Munculkan Alert</button>
+
+    <div class="countdown" id="countdown">
+        <p><strong>DANGER!!!</strong></p>
+        <p>Alert akan tertutup dalam</p>
+        <span id="count">5</span>
+    </div>
+
+    <script>
+        document.getElementById("myButton").addEventListener("click", function() {
+            let count = 5;
+            let countdownElement = document.getElementById("countdown");
+            countdownElement.classList.add("show");
+            let interval = setInterval(function() {
+                document.getElementById("count").innerText = count;
+                count--;
+                if (count < 0) {
+                    clearInterval(interval);
+                    countdownElement.classList.remove("show");
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>

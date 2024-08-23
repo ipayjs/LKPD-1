@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        form {
+            background-color: #f0f0f0;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .name, .age, .gender {
+            margin-bottom: 15px;
+        }
+        label {
+            display: flex;
+            flex-direction: column;
+        }
+        input, select {
+            margin-top: 5px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        #output {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form onsubmit="hasil();return false ">
+        <div class="name">
+            <label for="name">
+                name:
+                <input type="text" id = "name">
+            </label>
+        </div>
+        <div class="age">
+            <label for="age">
+                age:
+                <input type="number" id = "age">
+            </label>
+        </div>
+        <div class="gender">
+            <label for="gender">
+                <select id="gender">
+                    <option value="male">Laki-Laki</option>
+                    <option value="female">Perempuan</option>
+                </select>
+            </label>
+        </div>
+        <button type="submit" onclick="StopTime()">submit</button>
+    </form>
+    
+    <p id="output"></p>
+    
+    <script>
+        
+        function hasil() {
+            var nama = document.getElementById("name").value;
+            var age = document.getElementById('age').value;
+            var gender = document.getElementById('gender').value;
+            var tampilkan = document.getElementById("output")
+           tampilkan.innerText = "nama : " + nama + ", age : " + age + ", gender : " + gender  
+        }
+
+        const time = setTimeout(mytime, 10000);
+        function mytime(){
+            alert("waktu habis !!")
+        }
+        
+        function StopTime(){
+            clearTimeout(time);
+        }
+    </script>
+</body>
+</html>
+
+
